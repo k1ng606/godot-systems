@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhlth0barscn"]
+
+[ext_resource type="Script" path="res://health/health_bar.gd" id="1_bar"]
+
+[node name="HealthBar" type="Control"]
+offset_right = 120.0
+offset_bottom = 14.0
+script = ExtResource("1_bar")
