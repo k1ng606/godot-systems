@@ -26,6 +26,7 @@ position = Vector2(10000, 0)
 script = ExtResource("2_grid")
 
 [node name="TopDownMover" parent="TopDownWorld" instance=ExtResource("4_top")]
+face_travel_direction = true
 
 [node name="ClickToMoveWorld" type="Node2D" parent="."]
 position = Vector2(20000, 0)
