@@ -37,5 +37,5 @@ Each module folder contains:
 | Module | Status | Notes |
 | --- | --- | --- |
 | `rts_camera` | Built | Top-down RTS-style camera: keyboard/edge/drag pan, cursor-anchored zoom, optional world bounds. `RTSCamera extends Camera2D`. |
-| `player_movement` | Planned | Side-scroller, 4/8-way, and RTS click-to-move (with obstacle avoidance). |
+| `player_movement` | Built | Side-scroller, 4/8-way, and RTS click-to-move. Three `CharacterBody2D` scenes sharing `Mover`; click-to-move steers via `NavigationAgent2D`. |
 | `inventory` | Planned | Grid/slot inventory. |

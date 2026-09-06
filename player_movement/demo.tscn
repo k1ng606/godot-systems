@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmv0pmdemoscn"]
+
+[ext_resource type="Script" path="res://player_movement/demo.gd" id="1_demo"]
+[ext_resource type="Script" path="res://player_movement/grid_backdrop.gd" id="2_grid"]
+[ext_resource type="PackedScene" path="res://player_movement/platformer_mover.tscn" id="3_plat"]
+[ext_resource type="PackedScene" path="res://player_movement/topdown_mover.tscn" id="4_top"]
+[ext_resource type="PackedScene" path="res://player_movement/click_to_move_mover.tscn" id="5_click"]
+
+[node name="Demo" type="Node2D"]
+script = ExtResource("1_demo")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PlatformerWorld" type="Node2D" parent="."]
+
+[node name="Grid" type="Node2D" parent="PlatformerWorld"]
+script = ExtResource("2_grid")
+
+[node name="PlatformerMover" parent="PlatformerWorld" instance=ExtResource("3_plat")]
+position = Vector2(0, -260)
+
+[node name="TopDownWorld" type="Node2D" parent="."]
+position = Vector2(10000, 0)
+
+[node name="Grid" type="Node2D" parent="TopDownWorld"]
+script = ExtResource("2_grid")
+
+[node name="TopDownMover" parent="TopDownWorld" instance=ExtResource("4_top")]
+
+[node name="ClickToMoveWorld" type="Node2D" parent="."]
+position = Vector2(20000, 0)
+
+[node name="Grid" type="Node2D" parent="ClickToMoveWorld"]
+script = ExtResource("2_grid")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="ClickToMoveWorld"]
+
+[node name="ClickToMoveMover" parent="ClickToMoveWorld" instance=ExtResource("5_click")]
+position = Vector2(-420, -260)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 1040.0
+offset_bottom = 140.0

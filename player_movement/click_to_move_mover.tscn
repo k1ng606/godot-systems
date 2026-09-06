@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmv0pmclickscn"]
+
+[ext_resource type="Script" path="res://player_movement/click_to_move_mover.gd" id="1_script"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 16.0
+
+[node name="ClickToMoveMover" type="CharacterBody2D"]
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")
+
+[node name="Body" type="Polygon2D" parent="."]
+color = Color(1, 0.8, 0.4, 1)
+polygon = PackedVector2Array(18, 0, -12, -12, -12, 12)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+radius = 16.0
+neighbor_distance = 200.0
+avoidance_enabled = true
