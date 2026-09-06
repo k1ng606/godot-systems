@@ -38,4 +38,4 @@ Each module folder contains:
 | --- | --- | --- |
 | `rts_camera` | Built | Top-down RTS-style camera: keyboard/edge/drag pan, cursor-anchored zoom, optional world bounds. `RTSCamera extends Camera2D`. |
 | `player_movement` | Built | Side-scroller, 4/8-way, and RTS click-to-move. Three `CharacterBody2D` scenes sharing `Mover`; click-to-move steers via `NavigationAgent2D`. |
-| `inventory` | Planned | Grid/slot inventory. |
+| `inventory` | Built | Fixed NxM slot grid. `InventoryData extends Resource` (stacks, add/take/drop/swap/sort + `slot_changed`/`changed` signals) drives `InventoryView extends PanelContainer`, a drag-and-drop grid with Shift-to-split, merge/swap on drop, tooltips, and cross-inventory transfer. Items are `ItemType` resources (`inventory/items/`). |

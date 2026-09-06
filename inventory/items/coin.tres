@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemType" load_steps=2 format=3 uid="uid://binv0coin"]
+
+[ext_resource type="Script" path="res://inventory/item_type.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"coin"
+display_name = "Gold Coin"
+max_stack = 99
+meta = {
+"color": Color(0.9, 0.74, 0.24, 1)
+}

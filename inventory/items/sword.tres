@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemType" load_steps=2 format=3 uid="uid://binv0sword"]
+
+[ext_resource type="Script" path="res://inventory/item_type.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"sword"
+display_name = "Iron Sword"
+max_stack = 1
+meta = {
+"color": Color(0.55, 0.6, 0.7, 1)
+}

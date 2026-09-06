@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://binv0viewscn"]
+
+[ext_resource type="Script" path="res://inventory/inventory_view.gd" id="1_view"]
+
+[node name="InventoryView" type="PanelContainer"]
+offset_right = 268.0
+offset_bottom = 216.0
+script = ExtResource("1_view")
