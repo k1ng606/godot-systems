@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://bgame0enemyscn"]
+
+[ext_resource type="Script" path="res://game/enemy.gd" id="1_enemy"]
+[ext_resource type="Script" path="res://health/health.gd" id="2_health"]
+[ext_resource type="Script" path="res://health/hurtbox.gd" id="3_hurtbox"]
+[ext_resource type="Script" path="res://health/hitbox.gd" id="4_hitbox"]
+[ext_resource type="PackedScene" path="res://health/health_bar.tscn" id="5_bar"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hurt"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_contact"]
+radius = 19.0
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 1
+collision_mask = 1
+script = ExtResource("1_enemy")
+max_speed = 110.0
+acceleration = 900.0
+deceleration = 900.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_body")
+
+[node name="Body" type="Polygon2D" parent="."]
+color = Color(0.62, 0.36, 0.78, 1)
+polygon = PackedVector2Array(0, -15, 14, 6, 6, 14, -6, 14, -14, 6)
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_health")
+max_health = 40
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("3_hurtbox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_hurt")
+
+[node name="ContactHitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4_hitbox")
+damage = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactHitbox"]
+shape = SubResource("CircleShape2D_contact")
+
+[node name="HealthBar" parent="." instance=ExtResource("5_bar")]
+offset_left = -20.0
+offset_top = -32.0
+offset_right = 20.0
+offset_bottom = -26.0
+health_path = NodePath("../Health")
+drain_speed = 6.0
+hide_when_full = true

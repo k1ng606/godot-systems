@@ -40,3 +40,12 @@ Each module folder contains:
 | `player_movement` | Built | Side-scroller, 4/8-way, and RTS click-to-move. Three `CharacterBody2D` scenes sharing `Mover`; click-to-move steers via `NavigationAgent2D`. |
 | `inventory` | Built | Fixed NxM slot grid. `InventoryData extends Resource` (stacks, add/take/drop/swap/sort + `slot_changed`/`changed` signals) drives `InventoryView extends PanelContainer`, a drag-and-drop grid with Shift-to-split, merge/swap on drop, tooltips, and cross-inventory transfer. Items are `ItemType` resources (`inventory/items/`). |
 | `health` | Built | Hit-point component + hitbox/hurtbox Area2D pair + HealthBar UI. `Health extends Node` (`damage`/`heal`/`kill`/`revive`/`set_max_health`, clamping, `health_changed`/`damaged`/`healed`/`died`/`revived` signals); `Hurtbox`/`Hitbox extends Area2D` route collisions via the nodes' own physics layers, with an optional per-source hit cooldown; `HealthBar extends Control` with trailing-drain draw. |
+
+## Demo game
+
+`game/` ("Gate Run") is a vertical slice that wires all four modules together —
+arena combat, loot, a bag and a gated exit. It is **not** a module and is the one
+folder allowed to depend on every module at once; nothing in a module folder may
+depend on it. See `game/readme.md`, including the `Hurtbox` rough edge it works
+around (an overlap that is already in place when a `Hitbox` is armed never
+fires).
