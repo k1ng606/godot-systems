@@ -22,7 +22,18 @@ Each module folder contains:
 - `demo.gd` / `demo.tscn` — a self-contained demo (grid, landmarks, sample content) exercising the module. Demos may use throwaway nodes and are not held to the "reusable" bar, but must still stay within the module folder.
 - Committed `.uid` files for each script (Godot 4.7 generates these; keep them tracked).
 
-`project.godot`'s `run/main_scene` points at the demo of whichever module is currently being worked on — update it when switching focus.
+`project.godot`'s `run/main_scene` points at `launcher/launcher.tscn`, a splash
+screen that lists every module demo and demo game and switches scene to the one
+you pick. Point it straight at a specific `demo.tscn` while iterating on that
+module if you prefer, but restore the launcher when done.
+
+## Launcher
+
+`launcher/` (`DemoLauncher extends Control`) is the default scene: a menu grouping
+the demos into "Modules" and "Demo games". Like `game/`, it is not a module and
+is allowed to reference every demo scene by path; nothing in a module folder may
+depend on it. Add a `DemoEntry` to `_catalog` in `launcher.gd` when you add a
+module.
 
 ## Code style
 
